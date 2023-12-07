@@ -16,7 +16,8 @@ pipeline {
         stage('Build Collection') {
             steps {
                 sh "cd ansible-devops/ibm/mas_devops"
-                sh "sudo ansible-galaxy collection build"
+                echo "${BUILD_USER}"
+                //sh "sudo ansible-galaxy collection build"
             }
         }
     }
