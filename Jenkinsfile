@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh '''
                     cd ansible-devops/ibm/mas_devops
-                    export user=${whoami}
+                    export user=${id}
                     echo $user
                     ansible-galaxy collection build
                 '''
