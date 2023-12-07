@@ -1,4 +1,5 @@
 FROM ubuntu
+USER root
 RUN apt-get update
 RUN apt-get -y install python3-pip
 RUN apt-get -y install git
