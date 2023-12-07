@@ -16,7 +16,7 @@ pipeline {
         stage('Build Collection') {
             steps {
                 sh "cd ansible-devops/ibm/mas_devops"
-                sh "echo '${BUILD_USER}'"
+                echo "printing jenkins inbuilt variables. workspace: ${WORKSPACE}"
             }
         }
     }
