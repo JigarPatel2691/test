@@ -48,6 +48,7 @@ pipeline {
         stage('Create OpenShift Cluster') {
             steps {
                 sh '''
+                    export PATH=$PATH:/var/lib/jenkins/.local/bin
                     export FYRE_USERNAME="jigar.patel2"
                     export FYRE_APIKEY="vVorG8gspkKpMiCH6IlSFU0zTsmOhMztBNcAt2IVg"
                     export FYRE_PRODUCT_ID="225"
