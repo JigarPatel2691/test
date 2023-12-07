@@ -19,6 +19,7 @@ pipeline {
                     cd ansible-devops/ibm/mas_devops
                     id
                     ansible-galaxy collection build
+                    cat /etc/os-release
                 '''
                 
             }
