@@ -16,9 +16,7 @@ pipeline {
         stage('Build Collection') {
             steps {
                 sh "cd ansible-devops/ibm/mas_devops"
-                sh "pwd"
-                sh "ls"
-                sh "which ansible-galaxy"
+                sh "ansible-galaxy collection build"
                 
             }
         }
