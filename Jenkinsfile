@@ -6,7 +6,7 @@ pipeline {
                 try {
                     sh "git clone https://github.com/ibm-mas/ansible-devops.git"
                 } finally {
-                    sh 'echo "already downloaded'
+                    sh 'echo "already downloaded"'
                 }
             }
         }
