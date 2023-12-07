@@ -3,9 +3,9 @@ pipeline {
     stages {
         stage('Clone MAS Repo') {
             steps {
-                sh "git clone https://github.com/ibm-mas/ansible-devops.git"
-                echo '${PWD}'
-                currentBuild.result = "SUCCESS"
+                try {
+                    sh "git clone https://github.com/ibm-mas/ansible-devops.git"
+                }
             }
         }
         stage('Build Collection') {
