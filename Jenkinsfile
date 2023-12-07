@@ -18,7 +18,7 @@ pipeline {
                 sh "cd ansible-devops/ibm/mas_devops"
                 sh "pwd"
                 sh "ls"
-                sh "find / -iname ansible.cfg"
+                sh "whoami"
             }
         }
     }
