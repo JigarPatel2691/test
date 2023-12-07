@@ -16,6 +16,7 @@ pipeline {
         stage('Build Collection') {
             steps {
                 sh "cd ansible-devops/ibm/mas_devops"
+                sh "echo '${whoami}'"
                 sh "sudo ansible-galaxy collection build"
             }
         }
