@@ -18,7 +18,7 @@ pipeline {
                 sh '''
                     cd ansible-devops/ibm/mas_devops
                     export ANSIBLE_REMOTE_TMP=/tmp/.ansible
-                    sudo ansible-galaxy collection build
+                    ansible-galaxy collection build
                 '''
                 
             }
