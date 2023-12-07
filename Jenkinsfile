@@ -16,7 +16,9 @@ pipeline {
         stage('Build Collection') {
             steps {
                 sh "cd ansible-devops/ibm/mas_devops"
-                sh "cat /etc/ansible/ansible.cfg"
+                sh "pwd"
+                sh "ls"
+                sh "find / -iname ansible.cfg"
             }
         }
     }
