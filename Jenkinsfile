@@ -5,8 +5,9 @@ pipeline {
             steps {
                 try {
                     sh "git clone https://github.com/ibm-mas/ansible-devops.git"
-                } finally {
-                    sh 'echo "already downloaded"'
+                } catch (err) {
+                    echo err.getMessage()
+                    echo "Error detected, but we will continue."
                 }
             }
         }
