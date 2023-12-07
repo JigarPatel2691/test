@@ -1,7 +1,5 @@
 pipeline {
     agent { dockerfile true }
-    environment {
-        ANSIBLE_REMOTE_TEMP=/tmp/.ansible/tmp
     stages {
         stage('Clone MAS Repo') {
             steps {
@@ -18,7 +16,7 @@ pipeline {
         stage('Build Collection') {
             steps {
                 sh "cd ansible-devops/ibm/mas_devops"
-                sh "export ANSIBLE_REMOTE_TEMP=env.ANSIBLE_REMOTE_TEMP"
+                sh "export ANSIBLE_REMOTE_TEMP=/tmp/.ansible/tmp"
                 sh "ansible-galaxy collection build"
             }
         }
