@@ -12,6 +12,7 @@ pipeline {
                         sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
                         python3 get-pip.py 
                         python3 -m pip install ansible junit_xml pymongo xmljson jmespath kubernetes openshift
+                        export PATH=$PATH:/var/lib/jenkins/.local/bin
                         '''
                     } catch (err) {
                         echo err.getMessage()
