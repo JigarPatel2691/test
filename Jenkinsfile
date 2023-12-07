@@ -12,7 +12,6 @@ pipeline {
                         sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
                         python3 get-pip.py 
                         python3 -m pip install ansible junit_xml pymongo xmljson jmespath kubernetes openshift
-                        export PATH=$PATH:/var/lib/jenkins/.local/bin
                         '''
                     } catch (err) {
                         echo err.getMessage()
@@ -36,6 +35,7 @@ pipeline {
         stage('Build Collection') {
             steps {
                 sh '''
+                    export PATH=$PATH:/var/lib/jenkins/.local/bin
                     ansible-galaxy collection build
                     ansible-galaxy collection install ibm-mas_devops-*.tar.gz --ignore-certs --force
                     rm ibm-mas_devops-*.tar.gz
