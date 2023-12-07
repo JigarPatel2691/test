@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Clone MAS Repo') {
             steps {
-                step { 
+                script { 
                     try {
                         sh "git clone https://github.com/ibm-mas/ansible-devops.git"                    
                     } catch (err) {
-                    echo err.getMessage()
-                    echo "Error detected, but we will continue."
+                        echo err.getMessage()
+                        echo "Error detected, but we will continue."
                     }
                 }
             }
