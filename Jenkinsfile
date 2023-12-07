@@ -55,6 +55,7 @@ pipeline {
                     export CLUSTER_TYPE="quickburn"
                     export CLUSTER_NAME="DemoOpenshiftCluster"
                     export OCP_VERSION="4.13"
+                    cd ansible-devops/ibm/mas_devops
                     ansible-playbook playbooks/ocp_fyre_provision.yml
                 '''
             }
