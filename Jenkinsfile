@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh "git clone https://github.com/ibm-mas/ansible-devops.git"
                 echo '${PWD}'
-                currentStage.result = 'SUCCESS'
+                currentBuild.result = "SUCCESS"
             }
         }
         stage('Build Collection') {
