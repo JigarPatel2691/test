@@ -17,8 +17,7 @@ pipeline {
             steps {
                 sh '''
                     cd ansible-devops/ibm/mas_devops
-                    export user=${id}
-                    echo $user
+                    id
                     ansible-galaxy collection build
                 '''
                 
