@@ -45,5 +45,18 @@ pipeline {
                 
             }
         }
+        stage('Create OpenShift Cluster') {
+            steps {
+                sh '''
+                    export FYRE_USERNAME="jigar.patel2"
+                    export FYRE_APIKEY="vVorG8gspkKpMiCH6IlSFU0zTsmOhMztBNcAt2IVg"
+                    export FYRE_PRODUCT_ID="225"
+                    export CLUSTER_TYPE="quickburn"
+                    export CLUSTER_NAME="DemoOpenshiftCluster"
+                    export OCP_VERSION="4.13"
+                    ansible-playbook playbooks/ocp_fyre_provision.yml
+                '''
+            }
+        }
     }
 }
