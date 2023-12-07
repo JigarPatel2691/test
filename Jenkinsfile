@@ -7,5 +7,11 @@ pipeline {
                 echo '${PWD}'
             }
         }
+        stage('Build Collection') {
+            steps {
+                sh "cd ansible-devops/ibm/mas_devops"
+                sh "ansible-galaxy collection build"
+            }
+        }
     }
 }
