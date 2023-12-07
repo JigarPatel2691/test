@@ -1,9 +1,10 @@
 pipeline {
     agent { dockerfile true }
     stages {
-        stage('Test') {
+        stage('Clone MAS Repo') {
             steps {
-                echo 'Building..'
+                git clone https://github.com/ibm-mas/ansible-devops.git
+                echo '${PWD}'
             }
         }
     }
