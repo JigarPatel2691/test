@@ -7,7 +7,7 @@ pipeline {
                     try {
                         sh '''
                         sudo apt-get update
-                        sudo apt -y install python3-pip
+                        sudo apt-get install python3-setuptools ca-certificates
                         sudo apt-get -y install git
                         sudo python3 -m pip install ansible junit_xml pymongo xmljson jmespath kubernetes openshift
                         '''
