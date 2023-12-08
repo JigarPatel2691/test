@@ -43,7 +43,9 @@ pipeline {
                     ansible-galaxy collection build
                     ansible-galaxy collection install ibm-mas_devops-*.tar.gz --ignore-certs --force
                     rm ibm-mas_devops-*.tar.gz
+
                 '''
+                
             }
         }
 /*
@@ -71,7 +73,13 @@ pipeline {
 */
         stage('OC login') {
             steps {
-                sh "${oc_login_command}"
+                sh '''
+                    wget -q https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux-4.14.4.tar.gz
+                    tar -zxf openshift-client-linux.tar.gz
+                    sudo mv oc kubectl /usr/local/bin/
+                    rm -rf openshift-client-linux.tar.gz
+                    "${oc_login_command}"
+                '''
             }
         }
     }
