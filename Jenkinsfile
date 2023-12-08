@@ -82,5 +82,14 @@ pipeline {
                 '''
             }
         }
+        stage('ansible run_role') {
+            steps {
+                sh '''
+                    cd ansible-devops/ibm/mas_devops
+                    export ROLE_NAME="ocs"
+                    ansible-playbook playbooks/run_role.yml
+                '''
+            }
+        }
     }
 }
