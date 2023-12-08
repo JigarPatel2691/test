@@ -78,7 +78,7 @@ pipeline {
                     tar -zxf openshift-client-linux-4.14.4.tar.gz
                     sudo mv oc kubectl /usr/local/bin/
                     rm -rf openshift-client-linux*.gz
-                    "${oc_login_command}"
+                    yes | "${oc_login_command}"
                 '''
             }
         }
