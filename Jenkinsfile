@@ -43,9 +43,7 @@ pipeline {
                     ansible-galaxy collection build
                     ansible-galaxy collection install ibm-mas_devops-*.tar.gz --ignore-certs --force
                     rm ibm-mas_devops-*.tar.gz
-
                 '''
-                
             }
         }
 /*
