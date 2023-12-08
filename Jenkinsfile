@@ -94,7 +94,7 @@ pipeline {
         }
         stage('ansible oneclick_core') {
             steps {
-                '''
+                sh '''
                 export PATH=$PATH:/var/lib/jenkins/.local/bin
                 cd ansible-devops/ibm/mas_devops
                 export ARTIFACTORY_USERNAME="pmqcloud@us.ibm.com"
