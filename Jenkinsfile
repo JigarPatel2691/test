@@ -117,6 +117,7 @@ pipeline {
                 export UDS_CONTACT_EMAIL="jigar.patel2@ibm.com"
                 export UDS_CONTACT_FIRSTNAME="jigar"
                 export UDS_CONTACT_LASTNAME="patel"
+                ansible-playbook playbooks/oneclick_core.yml
             '''
             }
         }
