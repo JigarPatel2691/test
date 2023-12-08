@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'oc_login_command', description: 'Please enter oc login command here.')
+        string(name: 'oc_login_command', description: 'Please enter oc login command with --insecure-skip-tls-verify flag.')
     }
     stages {
         stage('Install Dependencies') {
