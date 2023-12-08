@@ -95,6 +95,7 @@ pipeline {
         stage('ansible oneclick_core') {
             steps {
                 sh '''
+                echo "starting one core installation...."
                 export PATH=$PATH:/var/lib/jenkins/.local/bin
                 cd ansible-devops/ibm/mas_devops
                 export ARTIFACTORY_USERNAME="pmqcloud@us.ibm.com"
