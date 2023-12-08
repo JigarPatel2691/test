@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'oc_login_command', description: 'Please enter oc login command here.')
+    }
     stages {
         stage('Install Dependencies') {
             steps {
@@ -45,19 +48,32 @@ pipeline {
                 
             }
         }
+/*
         stage('Create OpenShift Cluster') {
             steps {
-                sh '''
-                    export PATH=$PATH:/var/lib/jenkins/.local/bin
-                    export FYRE_USERNAME="jigar.patel2"
-                    export FYRE_APIKEY="vVorG8gspkKpMiCH6IlSFU0zTsmOhMztBNcAt2IVg"
-                    export FYRE_PRODUCT_ID="225"
-                    export CLUSTER_TYPE="quickburn"
-                    export CLUSTER_NAME="DemoOpenshiftCluster"
-                    export OCP_VERSION="4.13"
-                    cd ansible-devops/ibm/mas_devops
-                    ansible-playbook playbooks/ocp_fyre_provision.yml
-                '''
+                try {
+                    sh '''
+                        export PATH=$PATH:/var/lib/jenkins/.local/bin
+                        export FYRE_USERNAME="jigar.patel2"
+                        export FYRE_APIKEY="vVorG8gspkKpMiCH6IlSFU0zTsmOhMztBNcAt2IVg"
+                        export FYRE_PRODUCT_ID="225"
+                        export CLUSTER_TYPE="quickburn"
+                        export CLUSTER_NAME="DemoOpenshiftCluster"
+                        export OCP_VERSION="4.13"
+                        cd ansible-devops/ibm/mas_devops
+                        ansible-playbook playbooks/ocp_fyre_provision.yml
+                    '''
+                } catch (err) {
+                    echo.err.getMessage()
+                    echo "Error detected whicl creating/login to cluster, continuing with oc login command"
+                }
+                
+            }
+        }
+*/
+        stage('OC login') {
+            steps {
+                sh "${oc_login_command}"
             }
         }
     }
