@@ -78,7 +78,7 @@ pipeline {
                     tar -zxf openshift-client-linux-4.14.4.tar.gz
                     sudo mv oc kubectl /usr/local/bin/
                     rm -rf openshift-client-linux*.gz
-                    yes | oc login --token=sha256~_d63rqYJN2Dd1oKmSvMJysc89-CIuDhuGMh9nJKKT_w --server=https://api.demoopenshiftcluster.cp.fyre.ibm.com:6443
+                    yes | oc login --token=sha256~_d63rqYJN2Dd1oKmSvMJysc89-CIuDhuGMh9nJKKT_w --server=https://api.demoopenshiftcluster.cp.fyre.ibm.com:6443 --insecure-skip-tls-verify
                 '''
             }
         }
