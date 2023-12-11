@@ -115,9 +115,12 @@ pipeline {
                 export IBM_ENTITLEMENT_KEY=${MAS_ENTITLEMENT_KEY}
                 export SLS_LICENSE_ID="0242ac110002"
                 export SLS_LICENSE_FILE="/home/jigar/authorized_entitlement.lic"
-                export UDS_CONTACT_EMAIL="jigar.patel2@ibm.com"
-                export UDS_CONTACT_FIRSTNAME="jigar"
-                export UDS_CONTACT_LASTNAME="patel"
+                #export UDS_CONTACT_EMAIL="jigar.patel2@ibm.com"
+                #export UDS_CONTACT_FIRSTNAME="jigar"
+                #export UDS_CONTACT_LASTNAME="patel"
+                export UDS_CONTACT_EMAIL="xxx@xxx.com"
+                export UDS_CONTACT_FIRSTNAME="xxx"
+                export UDS_CONTACT_LASTNAME="xxx"
                 ansible-playbook playbooks/oneclick_core.yml
             '''
             }
