@@ -136,6 +136,8 @@ pipeline {
             }
             steps{
                 sh '''
+                export PATH=$PATH:/var/lib/jenkins/.local/bin
+                cd ansible-devops/ibm/mas_devops
                 export MAS_INSTANCE_ID="devops01"
                 export MAS_CONFIG_DIR="/home/jigar/mas_devops_jigar"
                 export IBM_ENTITLEMENT_KEY="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE2OTY4NDgxNDQsImp0aSI6IjhjNWJjMDVmYjhhYjQwMjBiYTRjZGM3ODI0OGZhZGUyIn0.ebvdA1RyPEHJHfq6GlnUHdsOF52l7rFL7KcVFBIDsqc"
