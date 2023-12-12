@@ -4,9 +4,13 @@ pipeline {
         string(name: 'oc_login_command', description: 'Please enter oc login command with --insecure-skip-tls-verify flag.')
         booleanParam(name: 'MAS-CORE', defaultValue: false, description: 'Do you want MAS core to be installed ?')
         booleanParam(name: 'MANAGE', defaultValue: false, description: 'Do you want MANAGE to be installed ?')
+        booleanParam(name: 'Prepare_local_env', defaultValue: false, description: 'Do you want install dependences and setup environment ?')
     }
     stages {
         stage('Install Dependencies') {
+            when {
+                environment name: 'Prepare_local_env', value: 'true'
+            }
             steps {
                 script {
                     try {
