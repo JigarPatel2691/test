@@ -2,6 +2,8 @@ pipeline {
     agent any
     parameters {
         string(name: 'oc_login_command', description: 'Please enter oc login command with --insecure-skip-tls-verify flag.')
+        booleanParam(name: 'MAS-CORE', defaultValue: false, description: 'Do you want MAS core to be installed ?')
+        booleanParam(name: 'MANAGE', defaultValue: false, description: 'Do you want MANAGE to be installed ?')
     }
     stages {
         stage('Install Dependencies') {
@@ -93,6 +95,9 @@ pipeline {
             }
         }
         stage('ansible oneclick_core') {
+            when {
+                environment name: 'MAS-CORE', value: 'true'
+            }
             steps {
                 sh '''
                 echo "starting one core installation...."
@@ -124,6 +129,20 @@ pipeline {
                 ansible-playbook playbooks/oneclick_core.yml
             '''
             }
+        }
+        stage('Add Manage') {
+            when {
+                environment name: 'MANAGE', value: 'true'
+            }
+            steps{
+                sh '''
+                export MAS_INSTANCE_ID="devops01"
+                export MAS_CONFIG_DIR="/home/jigar/mas_devops_jigar"
+                export IBM_ENTITLEMENT_KEY="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE2OTY4NDgxNDQsImp0aSI6IjhjNWJjMDVmYjhhYjQwMjBiYTRjZGM3ODI0OGZhZGUyIn0.ebvdA1RyPEHJHfq6GlnUHdsOF52l7rFL7KcVFBIDsqc"
+                ansible-playbook ibm.mas_devops.oneclick_add_manage
+                '''
+            }
+
         }
     }
 }
