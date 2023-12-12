@@ -92,5 +92,38 @@ pipeline {
                 '''
             }
         }
+        stage('ansible oneclick_core') {
+            steps {
+                sh '''
+                echo "starting one core installation...."
+                export PATH=$PATH:/var/lib/jenkins/.local/bin
+                cd ansible-devops/ibm/mas_devops
+                export ARTIFACTORY_USERNAME="pmqcloud@us.ibm.com"
+                export ARTIFACTORY_TOKEN="eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiI1Z0dyZUE3SUk1NWNZelJDSmVHcDJXV01YSnV2SjJvWUNfeVcwNnM5WFQwIn0.eyJzdWIiOiJqZi1hY2Nlc3NAYzE0NTBhNDMtZjgyNS00MDA2LTg2ZjMtNDMzNzJiOTVmNjAxXC91c2Vyc1wvcG1xY2xvdWRAdXMuaWJtLmNvbSIsInNjcCI6ImFwcGxpZWQtcGVybWlzc2lvbnNcL3VzZXIiLCJhdWQiOlsiamZydEAqIiwiamZ4ckAqIl0sImlzcyI6ImpmLWFjY2Vzc0BjMTQ1MGE0My1mODI1LTQwMDYtODZmMy00MzM3MmI5NWY2MDEiLCJleHAiOjE3MDQ2MjU3NTMsImlhdCI6MTY5Njg0OTc1MywianRpIjoiYWRkYmY0M2UtYWQ5Yy00OGMwLThhNzUtMGRhOGIzM2Q0ODAxIn0.dZivp35RHFfKgn2T5BLu3dUjmrUfVUW_DPSj_pheg0jEElU6QafkyWNuvq4jfNCCDXne7ba9Gl880nZcS2Y67kkaV1eYmIN1IkTSrM3xtktnwr5Ny91Mq5X61SpnyXpqW8Bk4zb349gqflv39G9yFhMZBuRBeO95fKTLMJposBxqLqYyZSVm0g1kE2Wx6fgTCWCn0gndefZges0zZMe_3WxHKfvA2AjLR02TmAWx70Z3Pa24UqsVUE_it4-XMqUipK77N52DuXrpicYFnG8bMIJn-INC9uy4b1WcsNqduzCUi8jf2hFRpWVptrNfAkwrxT5WFAa6xUxmwet2Nsza0g"
+                export ARTIFACTORY_APIKEY="eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiI1Z0dyZUE3SUk1NWNZelJDSmVHcDJXV01YSnV2SjJvWUNfeVcwNnM5WFQwIn0.eyJzdWIiOiJqZi1hY2Nlc3NAYzE0NTBhNDMtZjgyNS00MDA2LTg2ZjMtNDMzNzJiOTVmNjAxXC91c2Vyc1wvcG1xY2xvdWRAdXMuaWJtLmNvbSIsInNjcCI6ImFwcGxpZWQtcGVybWlzc2lvbnNcL3VzZXIiLCJhdWQiOlsiamZydEAqIiwiamZ4ckAqIl0sImlzcyI6ImpmLWFjY2Vzc0BjMTQ1MGE0My1mODI1LTQwMDYtODZmMy00MzM3MmI5NWY2MDEiLCJleHAiOjE3MDQ2MjU3NTMsImlhdCI6MTY5Njg0OTc1MywianRpIjoiYWRkYmY0M2UtYWQ5Yy00OGMwLThhNzUtMGRhOGIzM2Q0ODAxIn0.dZivp35RHFfKgn2T5BLu3dUjmrUfVUW_DPSj_pheg0jEElU6QafkyWNuvq4jfNCCDXne7ba9Gl880nZcS2Y67kkaV1eYmIN1IkTSrM3xtktnwr5Ny91Mq5X61SpnyXpqW8Bk4zb349gqflv39G9yFhMZBuRBeO95fKTLMJposBxqLqYyZSVm0g1kE2Wx6fgTCWCn0gndefZges0zZMe_3WxHKfvA2AjLR02TmAWx70Z3Pa24UqsVUE_it4-XMqUipK77N52DuXrpicYFnG8bMIJn-INC9uy4b1WcsNqduzCUi8jf2hFRpWVptrNfAkwrxT5WFAa6xUxmwet2Nsza0g"
+                export MAS_CHANNEL="9.0.x-stable"
+                export MAS_CATALOG_VERSION="v8-master-amd64"
+                #export MAS_CATALOG_VERSION="v8-predict-dev-amd64"
+                export MAS_INSTANCE_ID="devops01"
+                export MAS_WORKSPACE_ID="main"
+                export MAS_ICR_CP="docker-na-public.artifactory.swg-devops.com/wiotp-docker-local"
+                export MAS_ICR_CPOPEN="docker-na-public.artifactory.swg-devops.com/wiotp-docker-local/cpopen"
+                export MAS_ENTITLEMENT_USERNAME="pmqcloud@us.ibm.com"
+                export MAS_ENTITLEMENT_KEY="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE2OTY4NDgxNDQsImp0aSI6IjhjNWJjMDVmYjhhYjQwMjBiYTRjZGM3ODI0OGZhZGUyIn0.ebvdA1RyPEHJHfq6GlnUHdsOF52l7rFL7KcVFBIDsqc"
+                export MAS_CONFIG_DIR="/home/jigar/mas_devops_jigar"
+                mkdir -p /home/jigar/mas_devops_jigar
+                export IBM_ENTITLEMENT_KEY=${MAS_ENTITLEMENT_KEY}
+                export SLS_LICENSE_ID="0242ac110002"
+                export SLS_LICENSE_FILE="/home/jigar/authorized_entitlement.lic"
+                #export UDS_CONTACT_EMAIL="jigar.patel2@ibm.com"
+                #export UDS_CONTACT_FIRSTNAME="jigar"
+                #export UDS_CONTACT_LASTNAME="patel"
+                export UDS_CONTACT_EMAIL="xxx@xxx.com"
+                export UDS_CONTACT_FIRSTNAME="xxx"
+                export UDS_CONTACT_LASTNAME="xxx"
+                ansible-playbook playbooks/oneclick_core.yml
+            '''
+            }
+        }
     }
 }
