@@ -170,6 +170,26 @@ pipeline {
                 export UDS_CONTACT_FIRSTNAME="xxx"
                 export UDS_CONTACT_LASTNAME="xxx"
                 ${oc_login_command}
+                export DB2_INSTANCE_NAME="db2w-shared"
+                export MANAGE_AIO_FLAG="false"
+                export MAS_APP_SETTINGS_AIO_FLAG="false"
+                export MAS_APP_ID="manage"
+                export MAS_APP_CHANNEL="9.0.x-stable"
+                export MAS_CONFIG_SCOPE=system
+                export MAS_APPWS_BINDINGS_JDBC=system
+                export MAS_APPWS_COMPONENTS="base=latest,health=latest"
+                export MAS_APP_SETTINGS_DB2_SCHEMA="maxdb"$MAS_INSTANCE_ID
+                export MAS_APP_SETTINGS_DEMODATA="false"
+                # end here custom db2 settings
+                export DB2_META_STORAGE_SIZE=5Gi  # Default 20Gi
+                export DB2_DATA_STORAGE_SIZE=50Gi  # Default 100Gi
+                export DB2_BACKUP_STORAGE_SIZE=10Gi  # Default 100Gi
+                export DB2_LOGS_STORAGE_SIZE=10Gi  # Default 100Gi
+                export DB2_TEMP_STORAGE_SIZE=20Gi  # Default 100Gi
+                export DB2_CPU_REQUESTS=1000m  # Default 4000m
+                export DB2_CPU_LIMITS=2000m  # Default 6000m
+                export DB2_MEMORY_REQUESTS=4Gi  # Default 8Gi
+                export DB2_MEMORY_LIMITS=8Gi  # Default 16Gi
                 ansible-playbook ibm.mas_devops.oneclick_add_manage
                 '''
             }
