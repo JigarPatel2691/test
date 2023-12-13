@@ -80,8 +80,8 @@ pipeline {
         stage('OC login') {
             steps {
                 sh '''
-                    wget -q https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux-4.14.4.tar.gz
-                    tar -zxf openshift-client-linux-4.14.4.tar.gz
+                    wget -q https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux-4.14.5.tar.gz
+                    tar -zxf openshift-client-linux-4.14.5.tar.gz
                     sudo mv oc kubectl /usr/local/bin/
                     rm -rf openshift-client-linux*.gz
                     ${oc_login_command}
