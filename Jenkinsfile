@@ -88,6 +88,7 @@ pipeline {
                 '''
             }
         }
+/*
         stage('ansible run_role') {
             steps {
                 sh '''
@@ -98,6 +99,7 @@ pipeline {
                 '''
             }
         }
+*/
         stage('ansible oneclick_core') {
             when {
                 environment name: 'MAS-CORE', value: 'true'
